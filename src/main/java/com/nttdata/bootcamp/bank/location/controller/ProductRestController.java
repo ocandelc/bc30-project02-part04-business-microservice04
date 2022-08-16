@@ -18,7 +18,7 @@ public class ProductRestController {
     @Autowired
     private LocationServiceInte productServiceInte;
 
-    @PostMapping
+    @PostMapping("create")
     public Mono<Location> create(@RequestBody final Location location) {
         log.debug("Begin RestController create Location");
         return productServiceInte.create(location);
@@ -36,13 +36,13 @@ public class ProductRestController {
         return productServiceInte.readByCodeLocation(codeLocation);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("update/{id}")
     public Mono<Location> updateById(@RequestBody final Location location, @PathVariable("id") final String id) {
         log.debug("Begin RestController updateById Location");
         return productServiceInte.updateById(id, location);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("delete/{id}")
     public Mono<Void> deleteById(@PathVariable final String id) {
         log.debug("Begin RestController deleteById Location");
         return productServiceInte.deleteById(id);
